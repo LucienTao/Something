@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>xiaoBai</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .container{
+            width:80%;
+        }
+        .myContent{
+            font-family:"Microsoft YaHei";
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-pills nav-justified" role="tablist" id="myTabs">
+            <li role="presentation" class="active">
+                <a href="#first" aria-controls="first" role="tab" data-toggle="tab">美白牙贴</a>
+            </li>
+            <li role="presentation">
+                <a href="#second" aria-controls="second" role="tab" data-toggle="tab">居家美白</a>
+            </li>
+            <li role="presentation">
+                <a href="#third" aria-controls="third" role="tab" data-toggle="tab">诊室美白</a>
+            </li>
+
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content myContent">
+            <div role="tabpanel" class="tab-pane fade in active" id="first">美白牙贴</div>
+            <div role="tabpanel" class="tab-pane fade" id="second">居家美白</div>
+            <div role="tabpanel" class="tab-pane fade" id="third">诊室美白</div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $("#myTabs a").click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
+</body>
+
+</html>
