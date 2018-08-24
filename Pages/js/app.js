@@ -88,7 +88,7 @@ particlesJS('particles-js',
           "mode": "repulse"
         },
         "onclick": {
-          "enable": true,
+          "enable": false,
           "mode": "push"
         },
         "resize": true
@@ -134,6 +134,9 @@ particlesJS('particles-js',
 new Vue({
   el: '#app',
   data: function() {
-    return { visible: false }
+    return { 
+      visible: false,
+
+    }
   }
 })

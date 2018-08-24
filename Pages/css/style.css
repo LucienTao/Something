@@ -19,18 +19,23 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 0;
   vertical-align: bottom;
+  background-color: #409EFF;
+  z-index: -1;
 }
 
 body {
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
+span {
+  display: block;
+  text-align: center;
 }
 
 #particles-js {
   width: 100%;
   height: 100%;
-  background-color: #409EFF;
 }
 
 .el-container {
@@ -41,3 +46,20 @@ body {
 .el-main {
   height: 90%;
 }
+
+.el-footer {
+  background-color: #1B2631;
+}
+
+#footerText {
+  height: 100%;
+  color: whitesmoke;
+}
+
+#registerForm{
+  background-color: white;
+  border-radius: 0.3em;
+  padding: 1em;
+  margin-top: 20vh;
+}
+

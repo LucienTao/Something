@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <!-- 引入样式 -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" media="screen" href="./assets/icon/iconfont.css">
   <link rel="stylesheet" media="screen" href="./css/style.css">
 </head>
 
@@ -17,14 +18,24 @@
   <div id="particles-js">
     <el-container id="app">
       <el-main>
-        <div id="register">
-          <span>酷宽工作室用户注册</span>
-          <input type="text" placeholder="用户名">
-
-        </div>
+        <el-row  type="flex" align="middle" class="row-bg" justify="center">
+          <el-col id="registerForm" :xs="18" :sm="14" :md="10" :lg="8" :xl="6">
+            <span>酷宽工作室用户注册</span>
+            <div id="register">
+              <el-input placeholder="用户名" prefix-icon="el-icon-extra-mine_fill"></el-input>
+              <el-input placeholder="手机号码" prefix-icon="el-icon-extra-mobilephone_fill"></el-input>
+              <el-input placeholder="密码" prefix-icon="el-icon-extra-lock_fill"></el-input>
+              <el-input placeholder="验证码" prefix-icon="el-icon-extra-message_fill"></el-input>
+            </div>
+          </el-col>
+        </el-row>
       </el-main>
       <el-footer>
-        <span>©版权所有：酷宽网络工作室</span>
+        <el-row id="footerText" type="flex" align="middle" class="row-bg" justify="center">
+          <el-col :xs="18" :sm="14" :md="10" :lg="8" :xl="6">
+            <span>©版权所有：酷宽网络工作室</span>
+          </el-col>
+        </el-row>
       </el-footer>
     </el-container>
   </div>
