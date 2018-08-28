@@ -13,19 +13,45 @@
 
 <body>
 
-
   <!-- particles.js container -->
   <div id="particles-js">
     <el-container id="app">
       <el-main>
-        <el-row  type="flex" align="middle" class="row-bg" justify="center">
+        <el-row type="flex" align="middle" class="row-bg" justify="center">
           <el-col id="registerForm" :xs="18" :sm="14" :md="10" :lg="8" :xl="6">
-            <span>酷宽工作室用户注册</span>
+            <el-row id="titleRow">
+              <span id="registerTitle">酷宽工作室用户注册</span>
+            </el-row>
+
             <div id="register">
-              <el-input placeholder="用户名" prefix-icon="el-icon-extra-mine_fill"></el-input>
-              <el-input placeholder="手机号码" prefix-icon="el-icon-extra-mobilephone_fill"></el-input>
-              <el-input placeholder="密码" prefix-icon="el-icon-extra-lock_fill"></el-input>
-              <el-input placeholder="验证码" prefix-icon="el-icon-extra-message_fill"></el-input>
+              <el-row class="formInput" id="userNameRow">
+                <el-input placeholder="用户名" prefix-icon="el-icon-extra-mine_fill"></el-input>
+              </el-row>
+
+              <el-row class="formInput" id="phoneRow">
+                <el-input placeholder="手机号码" prefix-icon="el-icon-extra-mobilephone_fill"></el-input>
+              </el-row>
+
+              <el-row class="formInput" id="passwordRow">
+                <el-input placeholder="密码" prefix-icon="el-icon-extra-lock_fill"></el-input>
+              </el-row>
+
+              <el-row class="formInput" id="codeRow">
+                <el-input placeholder="验证码" prefix-icon="el-icon-extra-message_fill">
+                  <el-button id="getCode" slot="append">点击获取</el-button>
+                </el-input>
+              </el-row>
+
+              <el-row class="formInput" id="loginBtnRow" align="middle" justify="end">
+                <el-col>
+                  <el-button id="loginBtn" type="text">已有账号？登陆</el-button>
+                </el-col>
+              </el-row>
+
+              <el-row class="formInput" id="registerBtnRow">
+                <el-button id="registerBtn" type="primary">注册</el-button>
+              </el-row>
+
             </div>
           </el-col>
         </el-row>
@@ -39,10 +65,6 @@
       </el-footer>
     </el-container>
   </div>
-
-
-
-
 
   <!-- scripts -->
   <script src="./js/lib/particles.min.js"></script>

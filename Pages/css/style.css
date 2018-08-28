@@ -4,7 +4,6 @@ body {
   padding: 0;
   border: 0;
   outline: 0;
-  font-size: 100%;
   vertical-align: baseline;
   background: transparent;
   width: 100%;
@@ -44,13 +43,19 @@ span {
 }
 
 .el-main {
-  height: 90%;
+  height: 90vh;
 }
 
 .el-footer {
   background-color: #1B2631;
 }
-
+.el-input__inner, .el-checkbox__inner, .el-textarea__inner, .el-button {
+  border-radius: 0;
+}
+.el-input-group__append{
+  border:1px;
+  border-radius: 0;
+}
 #footerText {
   height: 100%;
   color: whitesmoke;
@@ -58,8 +63,32 @@ span {
 
 #registerForm{
   background-color: white;
-  border-radius: 0.3em;
+  border-radius: 1em;
   padding: 1em;
-  margin-top: 20vh;
+  margin-top: 10vh;
 }
-
+#registerTitle{
+  color: #409EFF;
+  font-size: 1.5em;
+  font-family: "Microsoft JhengHei";
+  font-weight: bolder;
+}
+#getCode{
+  color: white;
+  background-color: #409EFF;
+}
+#loginBtn{
+  float: right;
+}
+.formInput{
+  margin:1vh 2vw 4vh 2vw;
+}
+#loginBtnRow{
+  margin:1vh 2vw 0 2vw;
+}
+#registerBtn{
+  width: 100%;
+}
+#titleRow{
+  margin:1vh 0 4vh 0;
+}
