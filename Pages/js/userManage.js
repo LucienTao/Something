@@ -4,7 +4,9 @@ new Vue({
         return {
             visible: false,
             remember: false,
-            isCollapse: true
+            isCollapse: true,
+            userName: "DefaultUser",
+            sideMenuState: "收起"
         }
     },
     methods: {
@@ -13,6 +15,11 @@ new Vue({
         },
         handleClose(key, keyPath) {
           console.log(key, keyPath);
+        },
+        handleSideMenuCollapse(){
+            this.sideMenuState = this.isCollapse == true ? "展开" : "收起";
+            this.isCollapse = !this.isCollapse;
+            
         }
       }
 })

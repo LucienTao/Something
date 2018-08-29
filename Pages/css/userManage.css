@@ -37,3 +37,14 @@ body {
   border:1px;
   border-radius: 0;
 }
+
+#header{
+  background-color: #3b75af;
+  color: white;
+}
+#headerRow{
+  height: 100%;
+}
+#title{
+  font-size: 1.5em;
+}
