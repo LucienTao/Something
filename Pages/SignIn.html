@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title>用户注册</title>
+  <title>后台登陆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <!-- 引入样式 -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <link rel="stylesheet" media="screen" href="./assets/icon/iconfont.css">
-  <link rel="stylesheet" media="screen" href="./css/register.css">
+  <link rel="stylesheet" media="screen" href="./css/login.css">
 </head>
 
 <body>
@@ -20,36 +20,30 @@
         <el-row type="flex" align="middle" class="row-bg" justify="center">
           <el-col id="registerForm" :xs="18" :sm="14" :md="10" :lg="8" :xl="6">
             <el-row id="titleRow">
-              <span id="Title">酷宽工作室用户注册</span>
+              <span id="Title">酷宽工作室后台登陆</span>
             </el-row>
 
             <div id="register">
               <el-row class="formInput" id="userNameRow">
-                <el-input placeholder="用户名" prefix-icon="el-icon-extra-mine_fill"></el-input>
+                <el-input placeholder="用户名/手机号码" prefix-icon="el-icon-extra-mine_fill"></el-input>
               </el-row>
 
-              <el-row class="formInput" id="phoneRow">
-                <el-input placeholder="手机号码" prefix-icon="el-icon-extra-mobilephone_fill"></el-input>
-              </el-row>
 
               <el-row class="formInput" id="passwordRow">
                 <el-input placeholder="密码" prefix-icon="el-icon-extra-lock_fill"></el-input>
               </el-row>
 
-              <el-row class="formInput" id="codeRow">
-                <el-input placeholder="验证码" prefix-icon="el-icon-extra-message_fill">
-                  <el-button id="getCode" slot="append">点击获取</el-button>
-                </el-input>
-              </el-row>
-
-              <el-row class="formInput" id="loginBtnRow" align="middle" justify="end">
-                <el-col>
-                  <el-button id="loginBtn" type="text">已有账号？登陆</el-button>
+              <el-row class="formInput" id="signUpBtnRow" align="middle" justify="end">
+                <el-col :xs="18" :span="12">
+                    <el-checkbox id="rememberAccount" v-model="remember" v-model="checked">记住用户名和密码</el-checkbox>
+                </el-col>
+                <el-col :xs="6" :span="12">
+                  <el-button id="signUpBtn" type="text">注册账号</el-button>
                 </el-col>
               </el-row>
 
-              <el-row class="formInput" id="registerBtnRow">
-                <el-button id="registerBtn" type="primary">注册</el-button>
+              <el-row class="formInput" id="logininBtnRow">
+                <el-button id="logininBtn" type="primary">登陆</el-button>
               </el-row>
 
             </div>
@@ -57,7 +51,7 @@
         </el-row>
       </el-main>
       <el-footer>
-        <el-row id="footerText" type="flex" align="middle" class="row-bg" justify="center">
+        <el-row id="footerRow" type="flex" align="middle" class="row-bg" justify="center">
           <el-col :xs="18" :sm="14" :md="10" :lg="8" :xl="6">
             <span id="footer">©版权所有：酷宽网络工作室</span>
           </el-col>
@@ -72,7 +66,7 @@
 
   <!-- 引入组件库 -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-  <script src="./js/register.js"></script>
+  <script src="./js/login.js"></script>
 
 </body>
 

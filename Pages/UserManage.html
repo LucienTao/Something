@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>用户管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" media="screen" href="./assets/icon/iconfont.css">
+    <link rel="stylesheet" media="screen" href="./css/userManage.css">
+</head>
+
+<body>
+
+    <el-container id="app">
+        <el-header id="header">
+            <el-row type="flex" class="row-bg" justify="space-between">
+                <el-col :span="6">
+
+                </el-col>
+
+                <el-col :span="6">
+
+                </el-col>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside">
+                <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+                    <el-radio-button :label="false">展开</el-radio-button>
+                    <el-radio-button :label="true">收起</el-radio-button>
+                </el-radio-group>
+                <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+                    <el-menu-item index="1">
+                        <i class="el-icon-menu"></i>
+                        <span slot="title">导航一</span>
+                    </el-menu-item>
+                    <el-menu-item index="2">
+                        <i class="el-icon-menu"></i>
+                        <span slot="title">导航二</span>
+                    </el-menu-item>
+                    <el-menu-item index="3" disabled>
+                        <i class="el-icon-document"></i>
+                        <span slot="title">导航三</span>
+                    </el-menu-item>
+                    <el-menu-item index="4">
+                        <i class="el-icon-setting"></i>
+                        <span slot="title">导航四</span>
+                    </el-menu-item>
+                </el-menu>
+            </el-aside>
+            <el-main id="main">Main</el-main>
+        </el-container>
+    </el-container>
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="./js/userManage.js"></script>
+
+</body>
+
+</html>

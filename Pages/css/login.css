@@ -27,10 +27,6 @@ body {
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
-span {
-  display: block;
-  text-align: center;
-}
 
 #particles-js {
   width: 100%;
@@ -56,10 +52,7 @@ span {
   border:1px;
   border-radius: 0;
 }
-#footerText {
-  height: 100%;
-  color: whitesmoke;
-}
+
 
 #registerForm{
   background-color: white;
@@ -67,28 +60,45 @@ span {
   padding: 1em;
   margin-top: 10vh;
 }
-#registerTitle{
+.formInput{
+  margin:1vh 2vw 4vh 2vw;
+}
+
+#titleRow{
+  margin:1vh 0 4vh 0;
+}
+#Title{
   color: #409EFF;
   font-size: 1.5em;
   font-family: "Microsoft JhengHei";
   font-weight: bolder;
+  display: block;
+  text-align: center;
 }
-#getCode{
-  color: white;
-  background-color: #409EFF;
-}
-#loginBtn{
-  float: right;
-}
-.formInput{
-  margin:1vh 2vw 4vh 2vw;
-}
-#loginBtnRow{
+
+#signUpBtnRow{
   margin:1vh 2vw 0 2vw;
 }
-#registerBtn{
+#rememberAccount{
+  padding: 12px 0;
+}
+#signUpBtn{
+  float: right;
+}
+
+
+#logininBtn{
   width: 100%;
 }
-#titleRow{
-  margin:1vh 0 4vh 0;
+
+
+
+#footerRow {
+  height: 100%;
+  color: whitesmoke;
 }
+#footer {
+  display: block;
+  text-align: center;
+}
+
