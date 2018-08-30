@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>日志查询</title>
+    <title>信息管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" media="screen" href="./assets/icon/iconfont.css">
-    <link rel="stylesheet" media="screen" href="./css/logCheck.css">
+    <link rel="stylesheet" media="screen" href="./css/infoManage.css">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
         </el-header>
         <el-container>
             <el-aside id="aside" width="10vw">
-                <el-menu id="asideMenu" default-active="4" @select="handleMenuSelect" :collapse="isCollapse">
+                <el-menu id="asideMenu" default-active="3" @select="handleMenuSelect" :collapse="isCollapse">
                     <el-card id="userHead" shadow="never">
                         <div id="headImgOuter">
                             <img id="headImg" :src="headImgUrl">
@@ -74,19 +74,17 @@
             <el-main id="main">
                 <div id="mainBack">
                     <el-row type="flex" justify="start" align="middle">
-                        <div id="LogTitle"><span>日志查询 ></span></div>
+                        <div id="InfoManageTitle"><span>信息管理 ></span></div>
                     </el-row>
                     <el-row type="flex" justify="start" align="middle">
                         <hr class="mainHr">
                     </el-row>
-                    <el-row id="LogRow" type="flex" justify="start" align="middle">
+                    <el-row id="InfoRow" type="flex" justify="start" align="middle">
                         <el-table :data="tableData" :fit="true" :stripe=true style="width: 100%">
-                            <el-table-column prop="id" label="ID" width="100" align="center"></el-table-column>
-                            <el-table-column prop="userName" label="用户名" min-width="200" align="center"></el-table-column>
-                            <el-table-column prop="queryTime" label="查询时间" min-width="200" align="center"></el-table-column>
-                            <el-table-column prop="stockName" label="查询股票" min-width="200" align="center"></el-table-column>
-                            <el-table-column prop="stockCode" label="股票代码" min-width="150" align="center"></el-table-column>
-
+                            <el-table-column prop="id" label="ID" width="200" align="center"></el-table-column>
+                            <el-table-column prop="title" label="文章标题" min-width="300" align="center"></el-table-column>
+                            <el-table-column prop="colName" label="所属栏目" min-width="300" align="center"></el-table-column>
+                            <el-table-column prop="time" label="发表时间" min-width="200" align="center"></el-table-column>
                             <el-table-column prop="manage" label="操作" min-width="300" align="center">
                                 <template slot-scope="scope">
                                     <el-button size="mini" @click="handleEdit(scope.$index, scope.row.id)">编辑</el-button>
@@ -111,7 +109,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./js/logCheck.js"></script>
+    <script src="./js/infoManage.js"></script>
 
 </body>
 
