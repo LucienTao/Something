@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>栏目管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" media="screen" href="./assets/icon/iconfont.css">
+    <link rel="stylesheet" media="screen" href="./css/columnManage.css">
+</head>
+
+<body>
+
+    <el-container id="app">
+        <el-header id="header">
+            <el-row id="headerRow" type="flex" justify="space-between" align="middle">
+                <el-col :span="10">
+                    <div id="title">酷宽工作室后台管理</div>
+                </el-col>
+                <el-col :span="6">
+                    <el-row type="flex" align="middle" justify="space-around">
+                        <el-col :span="15">
+                            <i class="el-icon-extra-people_fill" style="display:inline-block"></i>
+                            <div id="userName" style="display:inline-block">{{userName}}</div>
+                        </el-col>
+                        <el-col :span="1">
+                            <el-button size="mini" icon="el-icon-setting" circle></el-button>
+                        </el-col>
+                        <el-col :span="1">
+                            <el-button size="mini" icon="el-icon-info" circle></el-button>
+                        </el-col>
+                        <el-col :span="1">
+                            <el-button size="mini" icon="el-icon-error" circle></el-button>
+                        </el-col>
+                    </el-row>
+
+                </el-col>
+            </el-row>
+        </el-header>
+        <el-container>
+            <el-aside id="aside" width="10vw">
+                <el-menu id="asideMenu" default-active="2" @select="handleMenuSelect" :collapse="isCollapse">
+                    <el-card id="userHead" shadow="never">
+                        <div id="headImgOuter">
+                            <img id="headImg" :src="headImgUrl">
+                        </div>
+                        <div id="headName">{{userName}}</div>
+                    </el-card>
+                    <hr id="menuHr">
+                    <el-menu-item index="1">
+                        <i class="el-icon-extra-group"></i>
+                        <span slot="title">用户管理</span>
+                    </el-menu-item>
+                    <el-menu-item index="2">
+                        <i class="el-icon-extra-manage"></i>
+                        <span slot="title">栏目管理</span>
+                    </el-menu-item>
+                    <el-menu-item index="3">
+                        <i class="el-icon-document"></i>
+                        <span slot="title">信息管理</span>
+                    </el-menu-item>
+                    <el-menu-item index="4">
+                        <i class="el-icon-time"></i>
+                        <span slot="title">查询日志</span>
+                    </el-menu-item>
+                    <el-menu-item index="5">
+                        <i class="el-icon-extra-dynamic"></i>
+                        <span slot="title">股票数据</span>
+                    </el-menu-item>
+                </el-menu>
+            </el-aside>
+            <el-main id="main">
+                <div id="mainBack">
+                    <el-row type="flex" justify="start" align="middle">
+                        <div id="newColumnTitle"><span>新建栏目 ></span></div>
+                    </el-row>
+                    <el-row type="flex" justify="start" align="middle">
+                        <hr class="mainHr">
+                    </el-row>
+                    <el-row id="newColumnRow" type="flex" justify="start" align="middle">
+                        <el-col :xs="3" :sm="3" :md="3" :lg="2" :xl="2">
+                            <span>栏 目 名 称</span>
+                        </el-col>
+                        <el-col :xs="8" :sm="6" :md="6" :lg="5" :xl="3">
+                            <el-input v-model="newColumnName" clearable></el-input>
+                        </el-col>
+                        <el-col :offset="2" :xs="4" :sm="4" :md="3" :lg="3" :xl="2">
+                            <el-button type="primary" icon="el-icon-upload2" @click="handleCreateColumn">上传</el-button>
+                        </el-col>
+                    </el-row>
+                    <el-row type="flex" justify="start" align="middle">
+                        <div id="columnManageTitle"><span>栏目管理 ></span></div>
+                    </el-row>
+                    <el-row type="flex" justify="start" align="middle">
+                        <hr class="mainHr">
+                    </el-row>
+                    <el-row id="colManageRow" type="flex" justify="start" align="middle">
+                        <el-table :data="tableData" :fit="true" :stripe=true style="width: 100%">
+                            <el-table-column prop="id" label="ID" width="300" align="center">
+                            </el-table-column>
+                            <el-table-column prop="colName" label="栏目名称" min-width="300" align="center">
+                            </el-table-column>
+                            <el-table-column prop="manage" label="操作" min-width="300" align="center">
+                                <template slot-scope="scope">
+                                    <el-button size="mini" @click="handleEdit(scope.$index, scope.row.id)">编辑</el-button>
+                                    <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row.id)">删除</el-button>
+                                </template>
+                            </el-table-column>
+                        </el-table>
+                    </el-row>
+                    <el-row id="pagingRow" type="flex" justify="center" align="middle">
+                        <el-pagination background :current-page.sync="currentPage" layout="total, prev, pager, next, jumper"
+                            :page-size="pageSize" :total="totalNum" @current-change="handleCurrentChange" @prev-click="handlePrevPage"
+                            @next-click="handleNextPage">
+                        </el-pagination>
+                    </el-row>
+                </div>
+
+            </el-main>
+        </el-container>
+    </el-container>
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/columnManage.js"></script>
+
+</body>
+
+</html>
