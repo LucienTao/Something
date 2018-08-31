@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>日志查询</title>
+    <title>信息管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" media="screen" href="./assets/icon/iconfont.css">
-    <link rel="stylesheet" media="screen" href="./css/logCheck.css">
+    <link rel="stylesheet" media="screen" href="./css/infoEdit.css">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
         </el-header>
         <el-container>
             <el-aside id="aside" width="10vw">
-                <el-menu id="asideMenu" default-active="4" @select="handleMenuSelect" :collapse="isCollapse">
+                <el-menu id="asideMenu" default-active="3" @select="handleMenuSelect" :collapse="isCollapse">
                     <el-card id="userHead" shadow="never">
                         <div id="headImgOuter">
                             <img id="headImg" :src="headImgUrl">
@@ -74,43 +74,60 @@
             <el-main id="main">
                 <div id="mainBack">
                     <el-row type="flex" justify="start" align="middle">
-                        <div id="LogTitle"><span>日志查询 ></span></div>
+                        <div id="ArticleEditTitle"><span>信息编辑 ></span></div>
                     </el-row>
                     <el-row type="flex" justify="start" align="middle">
                         <hr class="mainHr">
                     </el-row>
-                    <el-row id="LogRow" type="flex" justify="start" align="middle">
-                        <el-table :data="tableData" :fit="true" :stripe=true style="width: 100%">
-                            <el-table-column prop="id" label="ID" width="100" align="center"></el-table-column>
-                            <el-table-column prop="userName" label="用户名" min-width="200" align="center"></el-table-column>
-                            <el-table-column prop="queryTime" label="查询时间" min-width="200" align="center"></el-table-column>
-                            <el-table-column prop="stockName" label="查询股票" min-width="200" align="center"></el-table-column>
-                            <el-table-column prop="stockCode" label="股票代码" min-width="150" align="center"></el-table-column>
+                    <el-row class="newArticleRow" type="flex" justify="center" align="middle">
+                        <el-col :xs="3" :sm="3" :md="3" :lg="2" :xl="2">
+                            <span>标 题</span>
+                        </el-col>
+                        <el-col :xs="8" :sm="6" :md="6" :lg="6" :xl="6">
+                            <el-input label="test" v-model="newArticleName" clearable></el-input>
+                        </el-col>
+                    </el-row>
+                    <el-row class="newArticleRow" type="flex" justify="center" align="middle">
+                        <el-col :xs="4" :sm="4" :md="3" :lg="3" :xl="2">
+                            <span>栏 目</span>
+                        </el-col>
+                        <el-col :xs="8" :sm="8" :md="6" :lg="5" :xl="3">
+                            <el-select v-model="colSelect" placeholder="请选择">
+                                <el-option v-for="item in columns" :label="item.name" :value="item.id"></el-option>
+                            </el-select>
+                        </el-col>
+                        <el-col :xs="4" :sm="4" :md="3" :lg="3" :xl="2">
+                            <span>级 别</span>
+                        </el-col>
+                        <el-col :xs="5" :sm="4" :md="3" :lg="2" :xl="2">
+                            <el-select v-model="level" placeholder="请选择">
+                                <el-option v-for="item in levelSel" :label="item.name" :value="item.id"></el-option>
+                            </el-select>
+                        </el-col>
+                    </el-row>
+                    <el-row id="ArticleRow" type="flex" justify="center" align="middle">
+                        <!-- 编辑器的容器 -->
+                        <script id="container" name="content" type="text/plain"></script>
+                    </el-row>
+                    <el-row id="finishBtn" type="flex" justify="center" align="middle">
+                        <el-button type="primary" icon="el-icon-upload2" @click="handleCreateArticle">上传</el-button>
+                    </el-row>
 
-                            <el-table-column prop="manage" label="操作" min-width="300" align="center">
-                                <template slot-scope="scope">
-                                    <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row.id)">删除</el-button>
-                                </template>
-                            </el-table-column>
-                        </el-table>
-                    </el-row>
-                    <el-row id="pagingRow" type="flex" justify="center" align="middle">
-                        <el-pagination background :current-page.sync="currentPage" layout="total, prev, pager, next, jumper"
-                            :page-size="pageSize" :total="totalNum" @current-change="handleCurrentChange" @prev-click="handlePrevPage"
-                            @next-click="handleNextPage">
-                        </el-pagination>
-                    </el-row>
                 </div>
-
             </el-main>
         </el-container>
     </el-container>
 
+
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="./ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
     <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./js/logCheck.js"></script>
+    <script src="./js/infoEdit.js"></script>
 
 </body>
 
