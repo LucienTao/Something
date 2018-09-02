@@ -25,18 +25,18 @@
 
             <div id="register">
               <el-row class="formInput" id="userNameRow">
-                <el-input placeholder="用户名" prefix-icon="el-icon-extra-mine_fill"></el-input>
+                <el-input v-model="name" placeholder="用户名" prefix-icon="el-icon-extra-mine_fill"></el-input>
               </el-row>
 
-              <el-row class="formInput" id="phoneRow">
+              <el-row v-model="phone" class="formInput" id="phoneRow">
                 <el-input placeholder="手机号码" prefix-icon="el-icon-extra-mobilephone_fill"></el-input>
               </el-row>
 
-              <el-row class="formInput" id="passwordRow">
+              <el-row v-model="code" class="formInput" id="passwordRow">
                 <el-input placeholder="密码" prefix-icon="el-icon-extra-lock_fill"></el-input>
               </el-row>
 
-              <el-row class="formInput" id="codeRow">
+              <el-row v-model="verifyCode" class="formInput" id="codeRow">
                 <el-input placeholder="验证码" prefix-icon="el-icon-extra-message_fill">
                   <el-button id="getCode" slot="append">点击获取</el-button>
                 </el-input>
@@ -44,12 +44,12 @@
 
               <el-row class="formInput" id="loginBtnRow" align="middle" justify="end">
                 <el-col>
-                  <el-button id="loginBtn" type="text">已有账号？登陆</el-button>
+                  <el-button @click="handleJumpLogin" id="loginBtn" type="text">已有账号？登陆</el-button>
                 </el-col>
               </el-row>
 
               <el-row class="formInput" id="registerBtnRow">
-                <el-button id="registerBtn" type="primary">注册</el-button>
+                <el-button @click="handleSignUp" id="registerBtn" type="primary">注册</el-button>
               </el-row>
 
             </div>

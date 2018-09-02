@@ -11,8 +11,7 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
-particlesJS('particles-js',
-  {
+particlesJS('particles-js', {
     "particles": {
       "number": {
         "value": 80,
@@ -131,11 +130,48 @@ particlesJS('particles-js',
 
 );
 
-new Vue({
+let v = new Vue({
   el: '#app',
-  data: function() {
-    return { 
-      visible: false,
+  data: function () {
+    return {
+      baseUrl: "http://120.78.144.196:3002",
+      name: "",
+      phone: "",
+      code: "",
+      verifyCode: "",
+    }
+  },
+  methods: {
+    handleSignUp() {
+      if (v.handleVerifyData()) {
+        axios.post(v.baseUrl + '/register', {
+            username: v.name,
+            password: v.code,
+            phone: v.phone
+          })
+          .then(function (response) {
+            console.log(response);
+            if (response.data.Code === 200) {
+              v.$message('操作成功');
+              v.handleJumpSuccess();
+            } else {
+              v.$message('出现错误：' + response.data.Desc);
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+            v.$message('服务器未知错误');
+          });
+      }
+    },
+    handleVerifyData() {
+      return true;
+    },
+    handleJumpLogin() {
+
+    },
+    handleJumpSuccess(){
+
     }
   }
 })

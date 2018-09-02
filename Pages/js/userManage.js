@@ -2,61 +2,14 @@ new Vue({
     el: '#app',
     data: function () {
         return {
-            visible: false,
-            remember: false,
+            baseUrl: "http://120.78.144.196:3002",
             isCollapse: false,
             userName: "DefaultUser",
-            sideMenuState: "收起",
             headImgUrl: "https://www.setaswall.com/wp-content/uploads/2017/10/3d-Afloat-Drop-Img-Wallpaper-1080x1920.jpg",
             newUserName: "",
             newUserPhone: "",
             tableData: [{
                 id: 1,
-                name: "user",
-                phone: "123",
-                date: "2018-09-30"
-            }, {
-                id: 2,
-                name: "user",
-                phone: "123",
-                date: "2018-09-30"
-            }, {
-                id: 3,
-                name: "user",
-                phone: "123",
-                date: "2018-09-30"
-            }, {
-                id: 4,
-                name: "user",
-                phone: "123",
-                date: "2018-09-30"
-            }, {
-                id: 5,
-                name: "user",
-                phone: "123",
-                date: "2018-09-30"
-            }, {
-                id: 6,
-                name: "user",
-                phone: "123",
-                date: "2018-09-30"
-            }, {
-                id: 7,
-                name: "user",
-                phone: "123",
-                date: "2018-09-30"
-            }, {
-                id: 8,
-                name: "user",
-                phone: "123",
-                date: "2018-09-30"
-            }, {
-                id: 9,
-                name: "user",
-                phone: "123",
-                date: "2018-09-30"
-            }, {
-                id: 10,
                 name: "user",
                 phone: "123",
                 date: "2018-09-30"

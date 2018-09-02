@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <el-container id="app">
         <el-header id="header">
             <el-row id="headerRow" type="flex" justify="space-between" align="middle">
@@ -125,14 +124,24 @@
                         </el-table>
                     </el-row>
                     <el-row id="pagingRow" type="flex" justify="center" align="middle">
-                        <el-pagination background :current-page.sync="currentPage" layout="total, prev, pager, next, jumper" :page-size="pageSize" :total="totalNum"
-                            @current-change="handleCurrentChange" @prev-click="handlePrevPage" @next-click="handleNextPage">
+                        <el-pagination background :current-page.sync="currentPage" layout="total, prev, pager, next, jumper"
+                            :page-size="pageSize" :total="totalNum" @current-change="handleCurrentChange" @prev-click="handlePrevPage"
+                            @next-click="handleNextPage">
                         </el-pagination>
                     </el-row>
                 </div>
 
             </el-main>
         </el-container>
+        <el-dialog title="编辑用户信息" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+            <el-input v-model="modifyColumnName" placeholder="栏目名称"></el-input>
+            <hr class="mainHr">
+            <el-input v-model="modifyColumnCode" placeholder="栏目代码"></el-input>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="handleDialogCancel">取 消</el-button>
+                <el-button type="primary" @click="handleDialogConfirm">确 定</el-button>
+            </span>
+        </el-dialog>
     </el-container>
 
     <!-- scripts -->
