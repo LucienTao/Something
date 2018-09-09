@@ -24,33 +24,63 @@
             </el-row>
 
             <div id="register">
-              <el-row class="formInput" id="userNameRow">
-                <el-input v-model="name" placeholder="用户名" prefix-icon="el-icon-extra-mine_fill"></el-input>
-              </el-row>
 
-              <el-row v-model="phone" class="formInput" id="phoneRow">
-                <el-input placeholder="手机号码" prefix-icon="el-icon-extra-mobilephone_fill"></el-input>
-              </el-row>
+              <el-form :model="registerForm" :rules="rules" ref="registerForm" @submit.native.prevent>
 
-              <el-row v-model="code" class="formInput" id="passwordRow">
-                <el-input placeholder="密码" prefix-icon="el-icon-extra-lock_fill"></el-input>
-              </el-row>
+                <el-form-item required prop="name">
+                  <el-row class="formInput" id="userNameRow">
+                    <el-input v-model="registerForm.name" placeholder="用户名" prefix-icon="el-icon-extra-mine_fill"></el-input>
+                  </el-row>
+                </el-form-item>
 
-              <el-row v-model="verifyCode" class="formInput" id="codeRow">
-                <el-input placeholder="验证码" prefix-icon="el-icon-extra-message_fill">
-                  <el-button id="getCode" slot="append">点击获取</el-button>
-                </el-input>
-              </el-row>
 
-              <el-row class="formInput" id="loginBtnRow" align="middle" justify="end">
-                <el-col>
-                  <el-button @click="handleJumpLogin" id="loginBtn" type="text">已有账号？登陆</el-button>
-                </el-col>
-              </el-row>
+                <el-form-item required prop="phone">
+                  <el-row class="formInput" id="phoneRow">
+                    <el-input v-model="registerForm.phone" placeholder="手机号码" prefix-icon="el-icon-extra-mobilephone_fill"></el-input>
+                  </el-row>
+                </el-form-item>
 
-              <el-row class="formInput" id="registerBtnRow">
-                <el-button @click="handleSignUp" id="registerBtn" type="primary">注册</el-button>
-              </el-row>
+
+                <el-form-item required prop="code">
+                  <el-row class="formInput" id="passwordRow">
+                    <el-input type='password' v-model="registerForm.code" placeholder="密码" prefix-icon="el-icon-extra-lock_fill"></el-input>
+                  </el-row>
+                </el-form-item>
+
+                <el-form-item required prop="codeConfirm">
+                  <el-row class="formInput" id="passwordRow">
+                    <el-input type='password' v-model="registerForm.codeConfirm" placeholder="确认密码" prefix-icon="el-icon-extra-lock_fill"></el-input>
+                  </el-row>
+                </el-form-item>
+
+
+                <el-form-item required prop="verifyCode">
+                  <el-row class="formInput" id="codeRow">
+                    <el-input v-model="registerForm.verifyCode" placeholder="验证码" prefix-icon="el-icon-extra-message_fill">
+                      <el-button @click="handleSendVerifyCode" id="getCode" slot="append">点击获取</el-button>
+                    </el-input>
+                  </el-row>
+                </el-form-item>
+
+
+                <el-form-item>
+                  <el-row class="formInput" id="loginBtnRow" align="middle" justify="end">
+                    <el-col>
+                      <el-button @click="handleJumpLogin" id="loginBtn" type="text">已有账号？登陆</el-button>
+                    </el-col>
+                  </el-row>
+                </el-form-item>
+
+
+                <el-form-item>
+                  <el-row class="formInput" id="registerBtnRow">
+                    <el-button @click="handleSignUp" id="registerBtn" type="primary">注册</el-button>
+                  </el-row>
+                </el-form-item>
+
+              </el-form>
+
+
 
             </div>
           </el-col>
@@ -70,6 +100,7 @@
   <script src="./js/lib/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!-- 引入组件库 -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   <script src="./js/register.js"></script>

@@ -131,12 +131,77 @@ particlesJS('particles-js',
 
 );
 
-new Vue({
+let v = new Vue({
   el: '#app',
-  data: function() {
-    return { 
-      visible: false,
-      remember:false
+  data: function () {
+    var validatePass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'));
+      } else if (value.length < 6 || value.length > 20) {
+        callback(new Error('请输入正确长度的密码，6到20位'));
+      } else {
+        callback();
+      }
+    };
+    return {
+      baseUrl: "http://120.78.144.196:3002",
+
+      remember:false,
+      loginForm: {
+        name: "",
+        code: "",
+      },
+      rules: {
+        name: [{
+            required: true,
+            message: '请输入用户名',
+            trigger: 'blur'
+          },
+          {
+            min: 6,
+            max: 20,
+            message: '长度在 6 到 20 个字符',
+            trigger: 'blur'
+          }
+        ],
+        code: [{
+          validator: validatePass,
+          trigger: 'blur'
+        }],
+      },
+
+    }
+  },
+  methods: {
+    handleSignUp() {
+      if (v.handleVerifyData()) {
+        axios.post(v.baseUrl + '/v1/login', {
+            username: v.name,
+            password: v.code,
+          })
+          .then(function (response) {
+            console.log(response);
+            if (response.data.Code === 200) {
+              v.$message('操作成功');
+              v.handleJumpSuccess();
+            } else {
+              v.$message('出现错误：' + response.data.Desc);
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+            v.$message('服务器未知错误');
+          });
+      }
+    },
+    handleVerifyData() {
+      return true;
+    },
+    handleJumpLogin() {
+
+    },
+    handleJumpSuccess() {
+
     }
   }
 })

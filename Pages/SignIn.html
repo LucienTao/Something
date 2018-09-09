@@ -24,18 +24,24 @@
             </el-row>
 
             <div id="register">
-              <el-row class="formInput" id="userNameRow">
-                <el-input placeholder="用户名/手机号码" prefix-icon="el-icon-extra-mine_fill"></el-input>
-              </el-row>
+              <el-form :model="loginForm" :rules="rules" ref="loginForm" @submit.native.prevent>
+                <el-form-item required prop="name">
+                  <el-row class="formInput" id="userNameRow">
+                    <el-input v-model="loginForm.name" placeholder="用户名/手机号码" prefix-icon="el-icon-extra-mine_fill"></el-input>
+                  </el-row>
+                </el-form-item>
 
+                <el-form-item required prop="code">
+                  <el-row class="formInput" id="passwordRow">
+                    <el-input type='password' v-model="loginForm.code" placeholder="密码" prefix-icon="el-icon-extra-lock_fill"></el-input>
+                  </el-row>
+                </el-form-item>
+              </el-form>
 
-              <el-row class="formInput" id="passwordRow">
-                <el-input placeholder="密码" prefix-icon="el-icon-extra-lock_fill"></el-input>
-              </el-row>
 
               <el-row class="formInput" id="signUpBtnRow" align="middle" justify="end">
                 <el-col :xs="18" :span="12">
-                    <el-checkbox id="rememberAccount" v-model="remember" v-model="checked">记住用户名和密码</el-checkbox>
+                  <el-checkbox id="rememberAccount" v-model="remember">记住用户名和密码</el-checkbox>
                 </el-col>
                 <el-col :xs="6" :span="12">
                   <el-button id="signUpBtn" type="text">注册账号</el-button>
@@ -64,6 +70,7 @@
   <script src="./js/lib/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!-- 引入组件库 -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   <script src="./js/login.js"></script>

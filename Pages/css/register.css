@@ -82,7 +82,7 @@ body {
   float: right;
 }
 .formInput{
-  margin:1vh 2vw 4vh 2vw;
+  margin:0vh 0vw 0vh 0vw;
 }
 #loginBtnRow{
   margin:1vh 2vw 0 2vw;
