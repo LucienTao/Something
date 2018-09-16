@@ -39,6 +39,9 @@ new Vue({
         },
         handleNextPage() {
 
+        },
+        handleCreateArticle(){
+            
         }
     },
     mounted() {
